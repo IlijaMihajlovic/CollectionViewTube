@@ -12,7 +12,7 @@ class MenuBar: UIView {
     
     static let sharedInstance = MenuBar()
     
-    var tapHandelr: (()->())?
+    var myIndex = 0
     
     var horizontalBarLeftAnchorConstraint: NSLayoutConstraint?
     
@@ -92,12 +92,46 @@ extension MenuBar: UICollectionViewDelegateFlowLayout, UICollectionViewDataSourc
         
         cell.imageView.image = UIImage(named: imageNames[indexPath.item])?.withRenderingMode(.alwaysTemplate)
         cell.tintColor = UIColor.green
+        
        
         return cell
         
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
+        
+        myIndex = indexPath.item
+        
+        let x = CGFloat(indexPath.item) * frame.width / 3
+        horizontalBarLeftAnchorConstraint?.constant = x
+        
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.layoutIfNeeded()
+        }, completion: nil)
+        
+        
+
+       
+//        switch indexPath.item {
+//        case 0:
+//            let alertController = UIAlertController(title: "alert", message: "Hi", preferredStyle: .alert)
+//            let action = UIAlertAction(title: "dE", style: .default, handler: nil)
+//            alertController.addAction(action)
+//            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+//
+//        case 1:
+//            let alertController = UIAlertController(title: "alert", message: "Hi", preferredStyle: .actionSheet)
+//            let action = UIAlertAction(title: "Hellooooo", style: .default, handler: nil)
+//            alertController.addAction(action)
+//            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+//        default:
+//            break
+//        }
+//
+//    }
+        
+    }
     //It leyouts them out equally from left side to the right side
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -110,23 +144,7 @@ extension MenuBar: UICollectionViewDelegateFlowLayout, UICollectionViewDataSourc
         return 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
-        
-        let x = CGFloat(indexPath.item) * frame.width / 3
-        horizontalBarLeftAnchorConstraint?.constant = x
-        
-        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.layoutIfNeeded()
-        }, completion: nil)
-        
-        
-    }
-    
 
-    
-    
-    
     
 }
 
@@ -176,3 +194,4 @@ class MenuCell: BaseCell {
             ].forEach({$0.isActive = true})
     }
 }
+

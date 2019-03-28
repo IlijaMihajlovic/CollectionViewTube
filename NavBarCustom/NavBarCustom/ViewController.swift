@@ -28,8 +28,6 @@ class ViewController: UIViewController {
     }
     
    
-  
-    
     private func setupMenuBar() {
         view.addSubview(menuBar)
         menuBar.anchor(top: nil, bottom: view.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, size: .init(width: 0, height: 50))
