@@ -1,6 +1,6 @@
 # CollectionViewTube
 
-This project is still in progress
+This project is still in progress...
 ___
 
 ## One Last Note
