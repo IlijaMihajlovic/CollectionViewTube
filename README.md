@@ -1,6 +1,6 @@
 # CollectionViewTube
 
-Project is still in progress.o.💻 :)
+Project is still in progress...💻 :)
 
 ___
 
